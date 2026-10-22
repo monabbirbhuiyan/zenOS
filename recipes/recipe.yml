@@ -31,8 +31,8 @@ modules:
         - https://packages.microsoft.com/keys/microsoft.asc
     install:
       packages:
-        # Gaming
-        - steam
+        # Gaming (Steam is a Flatpak below: the RPM needs 32-bit pipewire,
+        # which conflicts with the base image's libfdk-aac)
         - gamescope
         - gamemode
         - mangohud
@@ -55,6 +55,7 @@ modules:
           - org.mozilla.firefox
           - com.github.tchx84.Flatseal
           # Gaming
+          - com.valvesoftware.Steam
           - com.heroicgameslauncher.hgl
           - net.lutris.Lutris
           - net.davidotek.pupgui2          # ProtonUp-Qt (installs Proton-GE)

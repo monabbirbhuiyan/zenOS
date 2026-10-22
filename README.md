@@ -9,7 +9,7 @@ Built automatically by [BlueBuild](https://blue-build.org) on GitHub Actions.
 |---|---|
 | Base | Universal Blue `base-main` (Fedora 44 Atomic) — atomic updates + rollback |
 | Desktop | COSMIC |
-| Gaming | Steam, gamescope, GameMode, MangoHud, Heroic, Lutris, ProtonUp-Qt (for Proton-GE) |
+| Gaming | Steam (Flatpak), gamescope, GameMode, MangoHud, Heroic, Lutris, ProtonUp-Qt (for Proton-GE) |
 | Windows apps | Wine (double-click `.exe` to run), Winetricks, Bottles |
 | Development | Git, VS Code, Distrobox, Podman |
 | Design | Krita, GIMP, Inkscape, Blender, Darktable |
