@@ -1,0 +1,12 @@
+(
+    output: "all",
+    source: Color(Gradient((
+        colors: [[0.06, 0.07, 0.16], [0.13, 0.20, 0.36], [0.20, 0.45, 0.50]],
+        radius: 135.0,
+    ))),
+    filter_by_theme: false,
+    rotation_frequency: 3600,
+    filter_method: Lanczos,
+    scaling_mode: Zoom,
+    sampling_method: Alphanumeric,
+)

@@ -8,7 +8,7 @@ Built automatically by [BlueBuild](https://blue-build.org) on GitHub Actions.
 | Area | Included |
 |---|---|
 | Base | Universal Blue `base-main` (Fedora 44 Atomic) — atomic updates + rollback |
-| Desktop | COSMIC |
+| Desktop | COSMIC, macOS-style: top bar, centered dock, zenOS wallpaper |
 | Gaming | Steam (Flatpak), gamescope, GameMode, MangoHud, Heroic, Lutris, ProtonUp-Qt (for Proton-GE) |
 | Windows apps | Wine (double-click `.exe` to run), Winetricks, Bottles |
 | Development | Git, VS Code, Distrobox, Podman |
