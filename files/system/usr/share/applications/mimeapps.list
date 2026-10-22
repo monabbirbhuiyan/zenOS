@@ -1,0 +1,6 @@
+[Default Applications]
+# Double-clicking a Windows program opens it with Wine
+application/x-ms-dos-executable=wine.desktop
+application/x-msdownload=wine.desktop
+application/x-msi=wine.desktop
+application/vnd.microsoft.portable-executable=wine.desktop

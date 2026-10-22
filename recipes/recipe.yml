@@ -1,0 +1,81 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: zenos  # image name on GitHub (lowercase)
+description: zenOS — Fedora Atomic + COSMIC, tuned for gaming, development and graphic design.
+
+# Universal Blue's plain Fedora Atomic base (no desktop). AMD/Intel GPUs need nothing extra.
+base-image: ghcr.io/ublue-os/base-main
+image-version: 44
+
+modules:
+  # 1. Copy our own files (default apps, repo files, configs) into the image
+  - type: files
+    files:
+      - source: system
+        destination: /
+
+  # 2. Desktop: COSMIC
+  - type: dnf
+    group-install:
+      packages:
+        - cosmic-desktop
+        - cosmic-desktop-apps
+
+  # 3. Gaming, Windows-app support, dev tools
+  - type: dnf
+    repos:
+      nonfree: rpmfusion
+      files:
+        - vscode.repo            # files/dnf/vscode.repo
+      keys:
+        - https://packages.microsoft.com/keys/microsoft.asc
+    install:
+      packages:
+        # Gaming
+        - steam
+        - gamescope
+        - gamemode
+        - mangohud
+        # Windows .exe support (Fedora's wine includes binfmt + desktop integration)
+        - wine
+        - winetricks
+        # Development
+        - git
+        - distrobox
+        - podman
+        - code
+
+  # 4. Apps installed from Flathub on first boot (sandboxed, auto-updating)
+  - type: default-flatpaks
+    configurations:
+      - scope: system
+        notify: true
+        install:
+          # Browser & utilities
+          - org.mozilla.firefox
+          - com.github.tchx84.Flatseal
+          # Gaming
+          - com.heroicgameslauncher.hgl
+          - net.lutris.Lutris
+          - net.davidotek.pupgui2          # ProtonUp-Qt (installs Proton-GE)
+          # Windows apps
+          - com.usebottles.bottles
+          # Graphic design
+          - org.kde.krita
+          - org.gimp.GIMP
+          - org.inkscape.Inkscape
+          - org.blender.Blender
+          - org.darktable.Darktable
+
+  # 5. Start the COSMIC login screen at boot
+  - type: systemd
+    system:
+      enabled:
+        - cosmic-greeter.service
+
+  - type: script
+    scripts:
+      - set-graphical-boot.sh
+
+  # 6. Sign the image so updates can be verified
+  - type: signing
